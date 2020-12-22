@@ -42,7 +42,7 @@ The `ccloud` init script will ask you for your login information.
 * Docker (We use Docker to build images locally)
 ** https://docs.docker.com/docker-for-mac/install/[install Docker Desktop for MacOS]
 * Git
-* https://jdk.dev[Java 11 (or later)]
+* https://jdk.dev[Java 11 (or later)], preferably 11, might run into gradle dependency issues with higher JDK.
 * Your favorite IDE or text editor
 ** Personally, I recommend https://www.jetbrains.com/idea/[IntelliJ IDEA].
 * https://kubernetes.io/docs/tasks/tools/install-kubectl/[`kubectl`] 
@@ -130,10 +130,16 @@ This workshop includes two apps - the microservices developed with Spring Boot.
 
 [source,shell script]
 .deploy to Kubernetes
+update skaffold.yaml image approriate to your environment, for example:
+image: localhost:5000/movies-generator
 ----
 skaffold run #<1>
+skaffold delete #<2>
 ----
 <1> This command will build images for
+<2> This command will delete kubernetes resources deployed by step 1
+
+
 
 == 2️⃣ Create Materialized view 
 
